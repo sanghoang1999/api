@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {   if($request->expectsJson()) {
             if($exception instanceof ModelNotFoundException) {
-                return response()->json(["Error"=>"Product not found"],404);
+                return response()->json(["Error"=>"Model not found"],404);
             }  
         }
         if($request->expectsJson()) {
