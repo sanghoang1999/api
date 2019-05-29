@@ -13,11 +13,12 @@ class ReviewResource extends JsonResource
      * @return array
      */
     public function toArray($request)
-    {
-        return [
-            'customer'=>$this->customer,
-            'body'=>$this->review,
-            'star'=>$this->star,
-        ];
+    {   
+            return [     
+                'customer'=>$this->customer,
+               'body'=>$this->review,
+               'star'=>$this->star,
+           ];
+       
     }
 }

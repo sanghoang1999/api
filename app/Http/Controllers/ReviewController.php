@@ -14,7 +14,10 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Product $product)
-    {
+    {   if($product->reviews->isEmpty())
+        {
+            return response()->json(["message"=>"No review yet"]);
+        }
         return ReviewResource::collection($product->reviews);
     }
 
