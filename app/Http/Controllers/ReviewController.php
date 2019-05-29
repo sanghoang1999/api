@@ -6,6 +6,8 @@ use App\Model\Review;
 use Illuminate\Http\Request;
 use App\Model\Product;
 use App\Http\Resources\ReviewResource;
+use App\Http\Requests\ReviewRequest;
+
 class ReviewController extends Controller
 {
     /**
@@ -37,9 +39,17 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReviewRequest $request,Product $product)
     {
-        //
+        $review = new Review();
+        $review->customer=$request->customer;
+        $review->review=$request->review;
+        $review->star=$request->star;
+        $review->product_id=$product->id;
+        $review->save();
+        return response([
+            'data'=> new ReviewResource($review)
+         ],201);
     }
 
     /**
@@ -73,7 +83,7 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        
     }
 
     /**

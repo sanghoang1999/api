@@ -77,7 +77,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
-    {   $this->ProductUserCheck($request);
+    { 
+         $this->ProductUserCheck($product);
         $request['detail']=$request->description;
         unset($request['description']);
         $product->update($request->all());
@@ -100,7 +101,7 @@ class ProductController extends Controller
         ],204);
     }
     public function ProductUserCheck($request) 
-    {
+    {   
         if(Auth::id()!=$request->user_id) {
             throw new ProductNotBelongToUser;
         } 
