@@ -20,7 +20,7 @@ class ProductCollection extends JsonResource
             'discount'=>$this->discount,
             'rating'=> $this->reviews->count() > 0 ? round($this->reviews->sum('star')/$this->reviews->count(),1) : "there is no rating",
             'href' => [
-                'reviews'=> route('products.show',$this->id),
+                'detail'=> route('products.show',$this->id),
             ]
         ];
     }
