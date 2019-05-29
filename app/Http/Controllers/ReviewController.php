@@ -6,7 +6,6 @@ use App\Model\Review;
 use Illuminate\Http\Request;
 use App\Model\Product;
 use App\Http\Resources\ReviewResource;
-
 class ReviewController extends Controller
 {
     /**
