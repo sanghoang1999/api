@@ -61,7 +61,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
-    {
+    {  
         return new ProductResource($product);
     }
 
@@ -91,6 +91,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response([
+            'Message'=>"Delete successfull"
+        ],204);
     }
 }
